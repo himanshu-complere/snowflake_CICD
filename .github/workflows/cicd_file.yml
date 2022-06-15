@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
+name: cicd_snowflake
 
 # Controls when the workflow will run
 on:
@@ -47,4 +45,4 @@ jobs:
           pip install schemachange
           
           echo "Step 2: Running schemachange"
-          schemachange -f $GITHUB_WORKSPACE/scripts -a kg49515.ap-south-1.aws -u ankit -r ACCOUNTADMIN -w $SF_WAREHOUSE -d SNOWFLAKE_CICD_NEW -c SNOWFLAKE_CICD_NEW.PUBLIC.CHANGE_HISTORY --create-change-history-table
+          schemachange -f $GITHUB_WORKSPACE/scripts -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c DEV_EDP_APPLICATION.STAGE.CHANGE_HISTORY --create-change-history-table
